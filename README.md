@@ -2,3 +2,5 @@
 用python写的DNSPOD的动态域名解析脚本
 
 只需要修改json文件中的根域名和子域名，以及dnspod中申请的APIID和TOKEN即可使用脚本
+
+脚本默认请求获取ipv4的地址，可以把ipv6参数改为True来使用
