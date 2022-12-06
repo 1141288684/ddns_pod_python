@@ -12,12 +12,10 @@ hostname = 'db.test'    # 主机名/子域(www)
 
 def get_ip(ipv6: bool = True):
     if ipv6:
-        url = 'https://api6.ipify.org?format=json'
+        url = 'https://api6.ipify.org'
     else:
-        url = 'https://api4.ipify.org?format=json'
-    res = requests.get(url)
-    d = json.loads(res.text)
-    return d['ip']
+        url = 'https://api4.ipify.org'
+    return requests.get(url)
 
 
 def get_record_id(ip):
