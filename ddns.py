@@ -5,10 +5,9 @@ from requests.adapters import HTTPAdapter
 # dnspod api 动态域名解析————只需要定时执行此脚本
 s = requests.session()
 s.mount('https://', HTTPAdapter(max_retries=5))  # 超时重传次数
-config = json.load(open('ddns.json', 'r', encoding='utf8'))
-login_token = config['API_ID']+','+config['TOKEN']  # API_ID,TOKEN
-domain = config['domain']   # 根域名
-hostname = config['hostname']    # 主机名/子域(www)
+login_token = ''  # API_ID,TOKEN
+domain = ''   # 根域名
+hostname = ''    # 主机名/子域(www)
 
 
 def get_ip(ipv6: bool = True):
