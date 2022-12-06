@@ -21,8 +21,8 @@ def get_ip(ipv6: bool = True):
     return d['ip']
 
 
-def get_record_id():
-    print("获取dns记录ing，可能会卡")
+def get_record_id(ip):
+    print("获取dns记录中，可能会卡")
     login = None
     url = 'https://dnsapi.cn/Record.List'
     form = {
@@ -34,18 +34,21 @@ def get_record_id():
     except requests.exceptions.RequestException:
         print("请求超时，请重试")
     rs = json.loads(login.text)  # 转为dict
-    record_id = None
     for i in rs['records']:
         if i['name'] == hostname:
-            record_id = i['id']
-    print("dns记录id:" + record_id)
-    return record_id
+            if i['value'] != ip:
+                record_id = i['id']
+                print("dns记录id:" + record_id)
+                return record_id
+            else:
+                print('ip没有发生变化，停止运行')
+                exit()
 
 
 def update_record(ip):
     rs = None
-    record_id = get_record_id()
-    print("更改解析ing，可能会卡")
+    record_id = get_record_id(ip)
+    print("更改解析中，可能会卡")
     url = 'https://dnsapi.cn/Record.Ddns'
     form = {
         'domain': domain,
