@@ -1,4 +1,6 @@
 # ddns_pod_python
 用python写的DNSPOD的动态域名解析脚本
+
 不用json加载的分支
+
 只需要修改python脚本中的根域名和子域名，以及dnspod中申请的APIID和TOKEN即可使用脚本
