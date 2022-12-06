@@ -16,7 +16,7 @@ def get_ip(ipv6: bool = True):
         url = 'https://api6.ipify.org'
     else:
         url = 'https://api4.ipify.org'
-    return requests.get(url)
+    return requests.get(url).text
 
 
 def get_record_id(ip):
