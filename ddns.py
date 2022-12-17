@@ -66,4 +66,4 @@ def update_record(ip):
         print("操作失败")
 
 
-update_record(get_ip(False))
+update_record(get_ip(config['ipv6']=='true'))
